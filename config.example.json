@@ -1,0 +1,11 @@
+{
+    "targets": [
+        {
+            "title": "Art - Doujinshi",
+            "requiredDownloads": 4000,
+            "maxPage": 2,
+            "category": "1_2",
+            "query": ""
+        }
+    ]
+}
