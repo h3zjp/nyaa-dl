@@ -10,7 +10,7 @@ import (
 
 	"github.com/JohnRabin2357/nyaa-dl/pkg/client"
 	"github.com/JohnRabin2357/nyaa-dl/pkg/config"
-	"github.com/JohnRabin2357/nyaa-dl/pkg/download"
+	"github.com/JohnRabin2357/nyaa-dl/pkg/downloader"
 	"github.com/JohnRabin2357/nyaa-dl/pkg/nyaa"
 	"github.com/urfave/cli/v2"
 )
@@ -59,10 +59,10 @@ func run() error {
 			return fmt.Errorf("failed to read config: %w", err)
 		}
 
-		client := client.NewClient(&client.NewClientInput{
+		client := client.New(&client.NewClientInput{
 			Config:     conf,
-			Nyaa:       nyaa.NewNyaa(),
-			Downloader: download.NewDownloader(c.String("output")),
+			Nyaa:       nyaa.New(),
+			Downloader: downloader.New(c.String("output")),
 		})
 
 		start := time.Now()

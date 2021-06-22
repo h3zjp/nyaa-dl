@@ -38,7 +38,7 @@ type ListInput struct {
 	Page int
 }
 
-func NewNyaa() Nyaa {
+func New() Nyaa {
 	return &htmlNyaa{
 		client: http.DefaultClient,
 	}

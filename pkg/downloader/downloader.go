@@ -1,4 +1,4 @@
-package download
+package downloader
 
 import (
 	"context"
@@ -18,7 +18,7 @@ type Downloader interface {
 	IsDownloaded(tr nyaa.Torrent) (bool, error)
 }
 
-func NewDownloader(outputPath string) Downloader {
+func New(outputPath string) Downloader {
 	return &downloader{
 		outputPath: outputPath,
 		client:     http.DefaultClient,

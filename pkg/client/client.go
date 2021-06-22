@@ -7,7 +7,7 @@ import (
 	"sync"
 
 	"github.com/JohnRabin2357/nyaa-dl/pkg/config"
-	"github.com/JohnRabin2357/nyaa-dl/pkg/download"
+	"github.com/JohnRabin2357/nyaa-dl/pkg/downloader"
 	"github.com/JohnRabin2357/nyaa-dl/pkg/nyaa"
 )
 
@@ -15,16 +15,16 @@ import (
 type Client struct {
 	config     *config.Config
 	nyaa       nyaa.Nyaa
-	downloader download.Downloader
+	downloader downloader.Downloader
 }
 
 type NewClientInput struct {
 	Config     *config.Config
 	Nyaa       nyaa.Nyaa
-	Downloader download.Downloader
+	Downloader downloader.Downloader
 }
 
-func NewClient(i *NewClientInput) *Client {
+func New(i *NewClientInput) *Client {
 	return &Client{
 		config:     i.Config,
 		nyaa:       i.Nyaa,
