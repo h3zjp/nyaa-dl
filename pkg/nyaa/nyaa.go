@@ -171,10 +171,11 @@ func (h *htmlNyaa) buildListURL(input *ListInput) string {
 	params := url.Values{}
 
 	params.Set("f", "2") // Trusted only
-
-	params.Set("c", input.Category)
 	params.Set("p", fmt.Sprintf("%d", input.Page))
 
+	if input.Category != "" {
+		params.Set("c", input.Category)
+	}
 	if input.Query != "" {
 		params.Set("q", input.Query)
 	}
