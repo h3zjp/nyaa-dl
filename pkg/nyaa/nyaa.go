@@ -36,6 +36,8 @@ type ListInput struct {
 	Query string
 	// Page to list.
 	Page int
+	// TrustedOnly is a flag for downloading only trusted user's torrent files.
+	TrustedOnly bool
 }
 
 func New() Nyaa {
@@ -170,9 +172,11 @@ func (h *htmlNyaa) fetchDoc(ctx context.Context, url string) (*goquery.Document,
 func (h *htmlNyaa) buildListURL(input *ListInput) string {
 	params := url.Values{}
 
-	params.Set("f", "2") // Trusted only
 	params.Set("p", fmt.Sprintf("%d", input.Page))
 
+	if input.TrustedOnly {
+		params.Set("f", "2")
+	}
 	if input.Category != "" {
 		params.Set("c", input.Category)
 	}

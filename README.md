@@ -30,7 +30,8 @@ First, prepare a json configuration file, e.g. `config.json`.
             "requiredDownloads": 6000,
             "maxPage": 2,
             "category": "1_2",
-            "query": "MyFavoriteArtist"
+            "query": "MyFavoriteArtist",
+            "trustedOnly": true
         }
     ]
 }
@@ -44,6 +45,7 @@ You can specify multiple targets, and a target speficitaions are here.
 - maxPage: Max page to check torrent files.
 - category (Optional): The value of `c` from `https://nyaa.example.com/?c=1_2`.
 - query (Optional): The value of `q` from `https://nyaa.example.com/?q=YourSearchQuery`.
+- trustedOnly: The flag whether is downloading from only trusted user uploaded files.
 
 ### Running
 

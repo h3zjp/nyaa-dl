@@ -50,10 +50,11 @@ func (c *Client) runTarget(ctx context.Context, target config.Target) error {
 
 	for page := 1; page <= target.MaxPage; page++ {
 		torrents, err := c.nyaa.List(ctx, &nyaa.ListInput{
-			Domain:   target.Domain,
-			Category: target.Category,
-			Query:    target.Query,
-			Page:     page,
+			Domain:      target.Domain,
+			Category:    target.Category,
+			Query:       target.Query,
+			TrustedOnly: target.TrustedOnly,
+			Page:        page,
 		})
 		if err != nil {
 			return fmt.Errorf("failed to list torrents: %w", err)

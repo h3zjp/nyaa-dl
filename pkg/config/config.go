@@ -23,6 +23,8 @@ type Target struct {
 	Query string `json:"query"`
 	// RequiredDownloads represents the minimum num of downloads to download.
 	RequiredDownloads int `json:"requiredDownloads"`
+	// TrustedOnly is a flag for downloading only trusted user's torrent files.
+	TrustedOnly bool `json:"TrustedOnly"`
 	// MaxPage to crawl nyaa.
 	MaxPage int `json:"maxPage"`
 }
