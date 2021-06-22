@@ -2,19 +2,24 @@
 
 `nyaa-dl` is a command line program to download torrents files from nyaa.
 
-**Don't use this for illegal download purposes.**
-**I'm not responsible for any trouble.**
+**Don't use this for illegal download purposes. I'm not responsible for any trouble.**
 
 ## Installation
 
-Download the command from [Releases Page](https://github.com/JohnRabin2357/nyaa-dl/releases).
+Please download commands from [Releases Page](https://github.com/JohnRabin2357/nyaa-dl/releases).
 
+- Windows (64bit): `nyaa-dl_x.x.x_Windows_x86_64.exe`
+- Windows (32bit): `nyaa-dl_x.x.x_Windows_i386.exe`
+
+If you want to build it yourself, run `make` or `go build -o ./nyaa-dl.out cmd/nyaa-dl/main.go`.
 
 ## Usage
 
+See `./nyaa-dl.exe --help` for more usage.
+
 ### Configuration
 
-First, prepare a json configuration file.
+First, prepare a json configuration file, e.g. `config.json`.
 
 ```config.json
 {
@@ -24,7 +29,7 @@ First, prepare a json configuration file.
             "requiredDownloads": 6000,
             "maxPage": 2,
             "category": "1_2",
-            "query": ""
+            "query": "MyFavoriteArtist"
         }
     ]
 }
@@ -32,14 +37,13 @@ First, prepare a json configuration file.
 
 You can specify multiple targets, and a target speficitaions are here.
 
-- title: free title.
+- title: Free title.
 - requiredDownloads: Minimum number of downloads threshold to download.
-- maxPage: Max page to crawl.
-- category (Optional): `c` of `https://nyaa.example.com/?c=1_2`.
-- query (Optional): `q` of `https://nyaa.example.com/?q=YourSearchQuery`.
+- maxPage: Max page to check torrent files.
+- category (Optional): The value of `c` from `https://nyaa.example.com/?c=1_2`.
+- query (Optional): The value of `q` from `https://nyaa.example.com/?q=YourSearchQuery`.
 
-### How to run
+### Running
 
-Example:`./nyaa-dl.exe --config="./config.json" --domain="nyaa.example.com" --output="./my-torrents"`.
-
-See `./nyaa-dl.exe --help` for more usage.
+For example, you can exec nyaa-dl like `./nyaa-dl.exe --config="./config.json" --domain="nyaa.example.com" --output="./my-torrents"`.\
+This command crawls nyaa by `./config.json` and saves torrent files to `./my-torrents`. When executed it a second time, skips to download already downloaded torrent files. So basically you don't have to remove torrent files in `./my-torrents`.
