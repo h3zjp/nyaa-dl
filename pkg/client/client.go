@@ -32,7 +32,7 @@ func NewClient(i *NewClientInput) *Client {
 	}
 }
 
-// Run starts downloading by the client config.
+// Run starts downloading for all targets.
 func (c *Client) Run(ctx context.Context) error {
 	for _, target := range c.config.Targets {
 		log.Printf("Running %q", target.Title)
