@@ -2,6 +2,7 @@
     "targets": [
         {
             "title": "Art - Doujinshi",
+            "domain": "nyaa.example.com",
             "requiredDownloads": 4000,
             "maxPage": 2,
             "category": "1_2",

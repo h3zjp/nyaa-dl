@@ -26,6 +26,7 @@ First, prepare a json configuration file, e.g. `config.json`.
     "targets": [
         {
             "title": "Art - Doujinshi",
+            "domain": "nyaa.example.com",
             "requiredDownloads": 6000,
             "maxPage": 2,
             "category": "1_2",
@@ -38,6 +39,7 @@ First, prepare a json configuration file, e.g. `config.json`.
 You can specify multiple targets, and a target speficitaions are here.
 
 - title: Free title.
+- domain: The domain of nyaa. e.g. `nyaa.example.com` from `https://nyaa.example.com`.
 - requiredDownloads: Minimum number of downloads threshold to download.
 - maxPage: Max page to check torrent files.
 - category (Optional): The value of `c` from `https://nyaa.example.com/?c=1_2`.
@@ -45,5 +47,5 @@ You can specify multiple targets, and a target speficitaions are here.
 
 ### Running
 
-For example, you can exec nyaa-dl like `./nyaa-dl.exe --config="./config.json" --domain="nyaa.example.com" --output="./my-torrents"`.\
+For example, you can exec nyaa-dl like `./nyaa-dl.exe --config="./config.json" --output="./my-torrents"`.\
 This command crawls nyaa by `./config.json` and saves torrent files to `./my-torrents`. When executed it a second time, skips to download already downloaded torrent files. So basically you don't have to remove torrent files in `./my-torrents`.

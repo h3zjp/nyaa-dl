@@ -15,6 +15,8 @@ type Config struct {
 type Target struct {
 	// Title represents a free title of this target.
 	Title string `json:"title"`
+	// Domain of nyaa.
+	Domain string `json:"domain"`
 	// Category of nyaa.
 	Category string `json:"category"`
 	// Query is a search keyword.

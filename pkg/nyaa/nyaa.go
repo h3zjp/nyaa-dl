@@ -28,6 +28,8 @@ type Nyaa interface {
 
 // ListInput is the input for Nyaa.List().
 type ListInput struct {
+	// Domain of nyaa.
+	Domain string
 	// Category to list.
 	Category string
 	// Query to search.
@@ -36,15 +38,13 @@ type ListInput struct {
 	Page int
 }
 
-func NewNyaa(domain string) Nyaa {
+func NewNyaa() Nyaa {
 	return &htmlNyaa{
-		domain: domain,
 		client: http.DefaultClient,
 	}
 }
 
 type htmlNyaa struct {
-	domain string
 	client *http.Client
 }
 
@@ -86,7 +86,7 @@ func (h *htmlNyaa) List(ctx context.Context, input *ListInput) (torrents []Torre
 			parseErr = errors.New("failed to get a URL of torrent, maybe nyaa html structure has changed")
 			return false
 		}
-		tr.URL = fmt.Sprintf("https://%s/%s", h.domain, strings.TrimPrefix(href, "/"))
+		tr.URL = fmt.Sprintf("https://%s/%s", input.Domain, strings.TrimPrefix(href, "/"))
 
 		// ID
 		id, err := extractID(tr.URL)
@@ -179,5 +179,5 @@ func (h *htmlNyaa) buildListURL(input *ListInput) string {
 		params.Set("q", input.Query)
 	}
 
-	return fmt.Sprintf("https://%s/?%s", h.domain, params.Encode())
+	return fmt.Sprintf("https://%s/?%s", input.Domain, params.Encode())
 }

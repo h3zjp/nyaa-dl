@@ -40,11 +40,6 @@ func run() error {
 
 	app.Flags = []cli.Flag{
 		&cli.StringFlag{
-			Name:     "domain",
-			Usage:    "The domain of a nyaa.",
-			Required: true,
-		},
-		&cli.StringFlag{
 			Name:     "config",
 			Usage:    "The path of a configuration.",
 			Required: true,
@@ -66,7 +61,7 @@ func run() error {
 
 		client := client.NewClient(&client.NewClientInput{
 			Config:     conf,
-			Nyaa:       nyaa.NewNyaa(c.String("domain")),
+			Nyaa:       nyaa.NewNyaa(),
 			Downloader: download.NewDownloader(c.String("output")),
 		})
 
