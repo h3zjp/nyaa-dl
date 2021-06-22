@@ -64,7 +64,7 @@ func (c *Client) runTarget(ctx context.Context, target config.Target) error {
 		if err != nil {
 			return fmt.Errorf("failed to filter torrents: %w", err)
 		}
-		log.Printf("Found %d torrent files to download in %dth page.", len(torrents), page)
+		log.Printf("Found %d torrent files in %dth page.", len(torrents), page)
 
 		torrCh := nyaa.GenTorrentsCh(ctx, torrents)
 		numWorkers := 2
